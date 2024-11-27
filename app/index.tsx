@@ -5,9 +5,12 @@ import React from "react";
 import "./global.css";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Button from "@/components/Button";
+import { useRouter } from "expo-router";
+import AppGradient from "@/components/AppGradient";
 const beachImage = require("../assets/meditation-images/beach.webp");
 
 const App = () => {
+  const router = useRouter();
   return (
     <View className="flex-1">
       <ImageBackground
@@ -15,11 +18,8 @@ const App = () => {
         resizeMode="cover"
         className="flex-1"
       >
-        <LinearGradient
-          colors={["rgba(0,0,0,0.4)", "rgba(0,0,0,0.8)"]}
-          className="flex-1"
-        >
-          <SafeAreaView className="flex-1 mx-5 my-12 justify-between">
+        <AppGradient colors={["rgba(0,0,0,0.4)", "rgba(0,0,0,0.8)"]}>
+          <SafeAreaView className="flex-1 px-1 justify-between">
             <View>
               <Text className="text-white text-4xl text-center font-bold">
                 Simple Meditation
@@ -31,12 +31,12 @@ const App = () => {
 
             <View>
               <Button
-                onPress={() => console.log("tapped")}
+                onPress={() => router.push("/nature-meditate")}
                 title="Get Started"
               />
             </View>
           </SafeAreaView>
-        </LinearGradient>
+        </AppGradient>
       </ImageBackground>
       <StatusBar style="light" />
     </View>
